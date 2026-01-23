@@ -1,0 +1,47 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e6] [cursor=pointer]: ♜
+      - generic [ref=e8] [cursor=pointer]: ♞
+      - generic [ref=e10] [cursor=pointer]: ♝
+      - generic [ref=e12] [cursor=pointer]: ♛
+      - generic [ref=e14] [cursor=pointer]: ♚
+      - generic [ref=e16] [cursor=pointer]: ♝
+      - generic [ref=e18] [cursor=pointer]: ♞
+      - generic [ref=e20] [cursor=pointer]: ♜
+      - generic [ref=e22] [cursor=pointer]: ♟
+      - generic [ref=e24] [cursor=pointer]: ♟
+      - generic [ref=e26] [cursor=pointer]: ♟
+      - generic [ref=e28] [cursor=pointer]: ♟
+      - generic [ref=e30] [cursor=pointer]: ♟
+      - generic [ref=e32] [cursor=pointer]: ♟
+      - generic [ref=e34] [cursor=pointer]: ♟
+      - generic [ref=e36] [cursor=pointer]: ♟
+      - generic [ref=e70] [cursor=pointer]: ♙
+      - generic [ref=e72] [cursor=pointer]: ♙
+      - generic [ref=e74] [cursor=pointer]: ♙
+      - generic [ref=e76] [cursor=pointer]: ♙
+      - generic [ref=e78] [cursor=pointer]: ♙
+      - generic [ref=e80] [cursor=pointer]: ♙
+      - generic [ref=e82] [cursor=pointer]: ♙
+      - generic [ref=e84] [cursor=pointer]: ♙
+      - generic [ref=e86] [cursor=pointer]: ♖
+      - generic [ref=e88] [cursor=pointer]: ♘
+      - generic [ref=e90] [cursor=pointer]: ♗
+      - generic [ref=e92] [cursor=pointer]: ♕
+      - generic [ref=e94] [cursor=pointer]: ♔
+      - generic [ref=e96] [cursor=pointer]: ♗
+      - generic [ref=e98] [cursor=pointer]: ♘
+      - generic [ref=e100] [cursor=pointer]: ♖
+    - generic [ref=e101]:
+      - heading "Historique des déplacements" [level=3] [ref=e102]
+      - list
+  - generic [ref=e103]:
+    - generic "Toggle devtools panel" [ref=e104] [cursor=pointer]:
+      - img [ref=e105]
+    - generic "Toggle Component Inspector" [ref=e110] [cursor=pointer]:
+      - img [ref=e111]
+```
