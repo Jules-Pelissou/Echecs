@@ -12,8 +12,8 @@ pipeline {
                 }
             post {
                 always {
-                    publishHTLM([
-                        allowmissing: true,
+                    publishHTML([
+                        allowMissing: true,
                         alwaysLinkToLastBuild: false,
                         icon: '', keepAll: true,
                         reportDir: 'html',
@@ -21,9 +21,9 @@ pipeline {
                         reportName: 'VitestReport',
                         reportTitles: '',
                         useWrapperFileDirectly: true
-                    ])
+                        ])
+                    }
                 }
-            }
             }
         }
 }
