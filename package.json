@@ -11,8 +11,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write --experimental-cli src/",
-    "test": "vitest",
-    "test:e2e": "playwright test"
+    "test": "vitest --reporter=html run",
+    "test:e2e": "playwright test --reporter=html"
   },
   "dependencies": {
     "vue": "^3.5.26"
