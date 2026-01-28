@@ -13,7 +13,7 @@ pipeline {
             post {
                 always {
                     publishHTLM([
-                        allowmissing; true,
+                        allowmissing: true,
                         alwaysLinkToLastBuild: false,
                         icon: '', keepAll: true,
                         reportDir: 'html',
