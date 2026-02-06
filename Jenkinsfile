@@ -6,9 +6,14 @@ pipeline {
                     image 'mcr.microsoft.com/playwright:v1.57.0-noble'
                     args '--network=host'
                 }}
+                environment {
+                    NETLIFY_AUTH_TOKEN = credentials('NETLIFY_TOKEN')
+                }
+                when { branch 'master' }
                 steps {
                     sh 'npm install'
                     sh 'npm run build'
+                    sh 'npx netlify deploy --prod --site "tpdevopsfie4"'
                 }
             post {
                 always {

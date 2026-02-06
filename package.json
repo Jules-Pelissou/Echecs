@@ -21,6 +21,7 @@
     "@playwright/test": "^1.58.0",
     "@vitejs/plugin-vue": "^6.0.3",
     "jsdom": "^27.4.0",
+    "netlify-cli": "^23.13.5",
     "prettier": "3.7.4",
     "vite": "^7.3.0",
     "vite-plugin-vue-devtools": "^8.0.5",
