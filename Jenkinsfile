@@ -40,7 +40,7 @@ pipeline {
                     CI_REGISTRY_PASSWORD = credentials('CI_REGISTRY_PASSWORD')
                 }
                 steps {
-                    sh 'docker buildx build -t --network=host $CI_REGISTRY_IMAGE .'
+                    sh 'docker buildx build -t $CI_REGISTRY_IMAGE --network=host .'
                     sh 'docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY'
                     sh 'docker push $CI_REGISTRY_IMAGE'
                 }

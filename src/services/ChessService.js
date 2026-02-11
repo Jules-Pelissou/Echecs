@@ -1,57 +1,78 @@
+import { Chess } from 'chess.js'
+
 export default class ChessService {
     constructor() {
+        this.chess = new Chess()
         this.history = []
-        this.board = []
-        this.initBoard()
-    }
-
-    initBoard() {
-        const pieces = [
-            "♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜",
-            "♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟",
-            "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "",
-            "♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙",
-            "♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"
-        ]
-
-        this.board = pieces.map((piece, index) => ({
-            piece,
-            position: index, // 0 → 63
-            color: (Math.floor(index / 8) + index) % 2 === 0
-                ? "white"
-                : "black"
-        }))
     }
 
     getBoard() {
-        return this.board
+        const board = this.chess.board()
+
+        // Convertit le format chess.js vers notre format UI
+        return board.flat().map((square, index) => {
+            let pieceSymbol = ""
+
+            if (square) {
+                pieceSymbol = this.getUnicodePiece(square)
+            }
+
+            return {
+                piece: pieceSymbol,
+                position: index,
+                color: (Math.floor(index / 8) + index) % 2 === 0
+                    ? "white"
+                    : "black"
+            }
+        })
     }
 
     movePiece(fromIndex, toIndex) {
-        const piece = this.board[fromIndex].piece
-        if (!piece) return
+        const from = this.indexToSquare(fromIndex)
+        const to = this.indexToSquare(toIndex)
 
-        // Historique
-        this.history.push({
-            piece,
-            from: fromIndex,
-            to: toIndex,
-            date: new Date()
+        const move = this.chess.move({
+            from,
+            to,
+            promotion: 'q' // promotion automatique en dame
         })
 
-        // Déplacement
-        this.board[toIndex].piece = piece
-        this.board[fromIndex].piece = ""
+        if (move) {
+            this.history.push(move)
+            return true
+        }
+
+        return false
     }
 
     getHistory() {
         return this.history
     }
 
-    getPiecePosition(index) {
-        return this.board[index]
+    getTurn() {
+        return this.chess.turn() // 'w' ou 'b'
+    }
+
+    isGameOver() {
+        return this.chess.isGameOver()
+    }
+
+    indexToSquare(index) {
+        const file = "abcdefgh"[index % 8]
+        const rank = 8 - Math.floor(index / 8)
+        return file + rank
+    }
+
+    getUnicodePiece(square) {
+        const map = {
+            p: { w: "♙", b: "♟" },
+            r: { w: "♖", b: "♜" },
+            n: { w: "♘", b: "♞" },
+            b: { w: "♗", b: "♝" },
+            q: { w: "♕", b: "♛" },
+            k: { w: "♔", b: "♚" }
+        }
+
+        return map[square.type][square.color]
     }
 }

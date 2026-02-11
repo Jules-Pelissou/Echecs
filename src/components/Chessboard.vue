@@ -1,13 +1,8 @@
 <template>
   <div class="container">
     <div class="board">
-      <div
-        v-for="(square, index) in board"
-        :key="index"
-        class="square"
-        :class="square.color"
-        @click="handleClick(index)"
-      >
+      <div v-for="(square, index) in board" :key="index" class="square" :class="square.color"
+        @click="handleClick(index)">
         <span class="piece">{{ square.piece }}</span>
       </div>
     </div>
@@ -51,10 +46,17 @@ export default {
           this.selectedIndex = index
         }
       } else {
-        this.chessService.movePiece(this.selectedIndex, index)
+        const moved = this.chessService.movePiece(this.selectedIndex, index)
+
+        if (moved) {
+          this.board = this.chessService.getBoard()
+          this.history = this.chessService.getHistory()
+        }
+
         this.selectedIndex = null
       }
     }
+
   }
 }
 </script>
